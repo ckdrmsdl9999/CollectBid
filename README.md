@@ -7,6 +7,8 @@
 포켓몬 카드, TCG, K-POP 포토카드, LEGO, 피규어 등<br>
 희소성과 수집 가치를 지닌 상품을 위한 실시간 중고 경매 서비스입니다.
 
+React Native 기반의 iOS·Android 모바일 앱으로 제공할 예정입니다.
+
 ![Java](https://img.shields.io/badge/Java-17-007396?style=flat-square&logo=openjdk&logoColor=white)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1.1-6DB33F?style=flat-square&logo=springboot&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Planned-4169E1?style=flat-square&logo=postgresql&logoColor=white)
@@ -23,6 +25,8 @@
 일반적인 중고거래의 고정가 판매 방식에서 벗어나, 컬렉터블 상품의 희소성과 시세 변화를 반영할 수 있는 **양방향 실시간 입찰 경험**을 제공하는 것이 목표입니다. 판매자가 상품을 등록하면 구매자들이 더 높은 가격을 제시하는 **일반 경매**와, 구매자가 원하는 상품을 요청하면 판매자들이 가격과 판매 조건을 제안하는 **역경매**를 모두 지원합니다.
 
 초기에는 모놀리식 구조로 핵심 도메인을 빠르게 검증하고, 이후 트래픽과 기능 규모에 맞춰 실시간 통신·캐싱·이벤트 기반 구조로 확장할 예정입니다.
+
+사용자는 **React Native 기반의 iOS·Android 모바일 앱**에서 상품을 등록하고, 일반 경매와 역경매에 실시간으로 참여할 수 있습니다.
 
 > 현재 프로젝트는 초기 개발 단계입니다. 아래 기능과 아키텍처 중 일부는 구현 예정 사항을 포함합니다.
 
@@ -106,6 +110,7 @@ flowchart LR
 
 | 기술 | 사용 목적 |
 | --- | --- |
+| React Native | iOS·Android 크로스 플랫폼 모바일 앱 개발 |
 | QueryDSL | 복합 조건 및 동적 쿼리 기반 상품 검색 |
 | WebSocket / STOMP | 입찰가와 입찰 내역 실시간 전송 |
 | Redis | 캐싱, 최고 입찰가 관리, 동시성 제어, HOT 경매 |
@@ -121,7 +126,7 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    Client[Web / Mobile Client] --> API[Spring Boot API]
+    Mobile[React Native App<br/>iOS / Android] --> API[Spring Boot API]
     API --> User[User]
     API --> Product[Product]
     API --> Auction[Auction]
@@ -178,6 +183,8 @@ User
 
 ### Phase 5 — 인프라
 
+- [ ] React Native 모바일 앱 개발
+- [ ] iOS·Android 빌드 및 배포
 - [ ] Docker / Docker Compose
 - [ ] CI/CD 및 AWS 배포
 - [ ] 모니터링, 부하 테스트 및 성능 개선
